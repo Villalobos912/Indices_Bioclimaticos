@@ -1,0 +1,114 @@
+---
+title: "INDICES BIOCLIMATICOS"
+output:
+  word_document: default
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Indice de aridez de Martonne
+
+Permite una primera identificación fitoclimática del mundo, aunque es especialmente
+efectivo en zonas tropicales y subtropicales.
+Se usará el IMa, cuya fórmula: $$IMA= PP/(T+10)$$
+
+```{r message=FALSE}
+#instalando librerias
+library(raster)
+library(rgdal)
+library(maptools)
+```
+```{r}
+#definiendo directorio de trabajo 
+setwd("E:/R/pp")
+#precipitacion anual mensual
+  pp_ene <- raster("E:/R/pp/wc2.1_2.5m_prec_2015-01.tif")
+  pp_feb <- raster("E:/R/pp/wc2.1_2.5m_prec_2015-02.tif")
+  pp_mar <- raster("E:/R/pp/wc2.1_2.5m_prec_2015-03.tif")
+  pp_abr <- raster("E:/R/pp/wc2.1_2.5m_prec_2015-04.tif")
+  pp_may <- raster("E:/R/pp/wc2.1_2.5m_prec_2015-05.tif")
+  pp_jun <- raster("E:/R/pp/wc2.1_2.5m_prec_2015-06.tif")
+  pp_jul <- raster("E:/R/pp/wc2.1_2.5m_prec_2015-07.tif")
+  pp_ago <- raster("E:/R/pp/wc2.1_2.5m_prec_2015-08.tif")
+  pp_sep <- raster("E:/R/pp/wc2.1_2.5m_prec_2015-09.tif")
+  pp_oct <- raster("E:/R/pp/wc2.1_2.5m_prec_2015-10.tif")
+  pp_nov <- raster("E:/R/pp/wc2.1_2.5m_prec_2015-11.tif")
+  pp_dic <- raster("E:/R/pp/wc2.1_2.5m_prec_2015-12.tif")
+  pp_total <- pp_ene + pp_feb + pp_mar + pp_abr + pp_may + pp_jun + pp_jul + pp_ago + pp_sep + pp_oct + pp_nov + pp_dic
+  
+ ```
+
+## Precipitacion Total Tnual Perido 2015
+
+```{r}
+plot(pp_total, main="precipitacion total anual 2015")
+```
+
+```{r}
+#Temperatua minima periodo 2015
+setwd("E:/R/tmin")
+
+tm_ene <- raster("E:/R/tmin/wc2.1_2.5m_tmin_2015-01.tif")
+  tm_feb <- raster("E:/R/tmin/wc2.1_2.5m_tmin_2015-02.tif")
+  tm_mar <- raster("E:/R/tmin/wc2.1_2.5m_tmin_2015-03.tif")
+  tm_abr <- raster("E:/R/tmin/wc2.1_2.5m_tmin_2015-04.tif")
+  tm_may <- raster("E:/R/tmin/wc2.1_2.5m_tmin_2015-05.tif")
+  tm_jun <- raster("E:/R/tmin/wc2.1_2.5m_tmin_2015-06.tif")
+  tm_jul <- raster("E:/R/tmin/wc2.1_2.5m_tmin_2015-07.tif")
+  tm_ago <- raster("E:/R/tmin/wc2.1_2.5m_tmin_2015-08.tif")
+  tm_sep <- raster("E:/R/tmin/wc2.1_2.5m_tmin_2015-09.tif")
+  tm_oct <- raster("E:/R/tmin/wc2.1_2.5m_tmin_2015-10.tif")
+  tm_nov <- raster("E:/R/tmin/wc2.1_2.5m_tmin_2015-11.tif")
+  tm_dic <- raster("E:/R/tmin/wc2.1_2.5m_tmin_2015-12.tif")
+  tm_total <- tm_ene + tm_feb + tm_mar + tm_abr + tm_may + tm_jun + tm_jul + tm_ago + tm_sep + tm_oct + tm_nov + tm_dic
+```
+```{r}
+# Temperatura Minima Anual periodo 2015
+plot(tm_total , main = "temperatura minima anual 2015")
+```
+
+```{r}
+#Temperatua maxima periodo 2015
+setwd("E:/R/tmax")
+
+tmx_ene <- raster("E:/R/tmax/wc2.1_2.5m_tmax_2015-01.tif")
+  tmx_feb <- raster("E:/R/tmax/wc2.1_2.5m_tmax_2015-02.tif")
+  tmx_mar <- raster("E:/R/tmax/wc2.1_2.5m_tmax_2015-03.tif")
+  tmx_abr <- raster("E:/R/tmax/wc2.1_2.5m_tmax_2015-04.tif")
+  tmx_may <- raster("E:/R/tmax/wc2.1_2.5m_tmax_2015-05.tif")
+  tmx_jun <- raster("E:/R/tmax/wc2.1_2.5m_tmax_2015-06.tif")
+  tmx_jul <- raster("E:/R/tmax/wc2.1_2.5m_tmax_2015-07.tif")
+  tmx_ago <- raster("E:/R/tmax/wc2.1_2.5m_tmax_2015-08.tif")
+  tmx_sep <- raster("E:/R/tmax/wc2.1_2.5m_tmax_2015-09.tif")
+  tmx_oct <- raster("E:/R/tmax/wc2.1_2.5m_tmax_2015-10.tif")
+  tmx_nov <- raster("E:/R/tmax/wc2.1_2.5m_tmax_2015-11.tif")
+  tmx_dic <- raster("E:/R/tmax/wc2.1_2.5m_tmax_2015-12.tif")
+  tmx_total <- tmx_ene + tmx_feb + tmx_mar + tmx_abr + tmx_may + tmx_jun + tmx_jul + tmx_ago + tmx_sep + tmx_oct + tmx_nov + tmx_dic
+```
+```{r}
+# Temperatura Maxima Anual periodo 2015
+plot(tmx_total , main = "temperatura maxima anual 2015")
+```
+
+
+```{r}
+# Calculando la temperaatura media anual 2015 
+tm_prm <- (tmx_total + tm_total) / 2
+plot(tm_prm , main = "Temperatura media anual 2015")
+
+```
+
+```{r}
+# Cargar mapa del poligono 
+hua <- readOGR("E:/QGIS/HUANUCO.shp")
+plot(hua)
+```
+
+
+
+
+
